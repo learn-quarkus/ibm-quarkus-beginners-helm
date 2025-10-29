@@ -4,7 +4,7 @@ metadata:
   name: m1
   namespace: m1
   annotations:
-    argocd.argoproj.io/sync-wave: 1
+    argocd.argoproj.io/sync-wave: '1'
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
 spec:
