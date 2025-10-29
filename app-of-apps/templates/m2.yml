@@ -4,7 +4,7 @@ metadata:
   name: m2
   namespace: m2
   annotations:
-    argocd.argoproj.io/sync-wave: "{{ .Values.amqstreams.argocd.syncwave }}"
+    argocd.argoproj.io/sync-wave: 1
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
 spec:
