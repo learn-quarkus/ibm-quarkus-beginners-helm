@@ -29,3 +29,5 @@ argocd:
     syncwave: "2"
   devworkspace:
     syncwave: "3"
+  operator:
+    syncwave: "-2"
