@@ -4,7 +4,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"
   name: devspaces
-  namespace: openshift-devspaces
+  namespace: devspaces
 spec:
   components:
     cheServer:
