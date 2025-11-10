@@ -22,7 +22,7 @@ checluster:
 argocd:
   enabled: true
   checluster:
-    syncwave: "0"
+    syncwave: "3"
   devspacesNamespace:
     syncwave: "1"
   devworkspaceTemplate:
