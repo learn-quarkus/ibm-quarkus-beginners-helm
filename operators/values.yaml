@@ -5,7 +5,7 @@ namespace: openshift-operators
 
 
 devspaces:
-  namespace: openshift-operators
+  namespace: devspaces
   subscription:
     channel: stable
     installPlanApproval: Automatic
