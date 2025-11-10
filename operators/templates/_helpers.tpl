@@ -90,3 +90,7 @@ argocd.argoproj.io/sync-wave: "{{ .Values.argocd.checluster.syncwave }}"
 {{- "{}" }}
 {{- end }}
 {{- end }}
+
+{{- define "devspaces-operator.name" -}}
+{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- end }}
