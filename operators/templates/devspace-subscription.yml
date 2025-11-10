@@ -6,7 +6,7 @@ metadata:
   labels:
     operators.coreos.com/devspaces.openshift-operators: ''
   name: devspaces
-  namespace: devspaces
+  namespace: openshift-operators
 spec:
   channel: stable
   installPlanApproval: Automatic
