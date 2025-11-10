@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: m1
+  name: module1
   namespace: openshift-gitops
   annotations:
     argocd.argoproj.io/sync-wave: '1'
@@ -10,7 +10,7 @@ metadata:
 spec:
   destination:
     name: ""
-    namespace: m1
+    namespace: module1
     server: 'https://kubernetes.default.svc'
   project: default
   syncPolicy:
@@ -29,7 +29,7 @@ spec:
   source:
     repoURL: 'https://github.com/learn-quarkus/quarkus-beginners-helm.git'
     targetRevision: 'main'
-    path: m1
+    path: module1
     helm:
       valuesObject:
       
