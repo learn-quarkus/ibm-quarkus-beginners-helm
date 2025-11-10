@@ -60,3 +60,33 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+ArgoCD Syncwave
+*/}}
+{{- define "devspaces-operator.argocd-syncwave" -}}
+{{- if .Values.argocd }}
+{{- if and (.Values.argocd.operator.syncwave) (.Values.argocd.enabled) -}}
+argocd.argoproj.io/sync-wave: "{{ .Values.argocd.operator.syncwave }}"
+{{- else }}
+{{- "{}" }}
+{{- end }}
+{{- else }}
+{{- "{}" }}
+{{- end }}
+{{- end }}
+
+{{/*
+ArgoCD Syncwave
+*/}}
+{{- define "devspaces-app.checluster.argocd-syncwave" -}}
+{{- if .Values.argocd }}
+{{- if and (.Values.argocd.checluster) (.Values.argocd.checluster.syncwave) (.Values.argocd.enabled) -}}
+argocd.argoproj.io/sync-wave: "{{ .Values.argocd.checluster.syncwave }}"
+{{- else }}
+{{- "{}" }}
+{{- end }}
+{{- else }}
+{{- "{}" }}
+{{- end }}
+{{- end }}
