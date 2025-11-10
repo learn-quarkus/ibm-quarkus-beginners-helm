@@ -94,3 +94,18 @@ argocd.argoproj.io/sync-wave: "{{ .Values.argocd.checluster.syncwave }}"
 {{- define "devspaces-operator.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
+
+{{/*
+ArgoCD Syncwave
+*/}}
+{{- define "devspaces-app.devspacesNamespace.argocd-syncwave" -}}
+{{- if .Values.argocd }}
+{{- if and (.Values.argocd.devspacesNamespace) (.Values.argocd.devspacesNamespace.syncwave) (.Values.argocd.enabled) -}}
+argocd.argoproj.io/sync-wave: "{{ .Values.argocd.devspacesNamespace.syncwave }}"
+{{- else }}
+{{- "{}" }}
+{{- end }}
+{{- else }}
+{{- "{}" }}
+{{- end }}
+{{- end }}
