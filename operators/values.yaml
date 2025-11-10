@@ -5,7 +5,7 @@ namespace: openshift-operators
 
 
 devspaces:
-  namespace: devspaces
+  namespace: openshift-operators
   subscription:
     channel: stable
     installPlanApproval: Automatic
@@ -13,12 +13,19 @@ devspaces:
     source: redhat-operators
     sourceNamespace: openshift-marketplace
 
-argocd:
-  enabled: true
-  operator:
-    syncwave: "-2"
-
 checluster:
   namespace: devspaces
   name: devspaces
   namespaceTemplate: devspaces-<username>
+
+
+argocd:
+  enabled: true
+  checluster:
+    syncwave: "0"
+  devspacesNamespace:
+    syncwave: "1"
+  devworkspaceTemplate:
+    syncwave: "2"
+  devworkspace:
+    syncwave: "3"
