@@ -17,3 +17,8 @@ argocd:
   enabled: true
   operator:
     syncwave: "-2"
+
+checluster:
+  namespace: devspaces
+  name: devspaces
+  namespaceTemplate: devspaces-<username>
