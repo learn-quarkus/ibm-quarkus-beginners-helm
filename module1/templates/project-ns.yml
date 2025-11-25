@@ -2,3 +2,5 @@ kind: Project
 apiVersion: project.openshift.io/v1
 metadata:
   name: {{ .Values.user.projectName }}
+  argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true, Prune=false
+
