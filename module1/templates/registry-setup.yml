@@ -8,6 +8,7 @@ spec:
   backoffLimit: 100
   template:
     spec:
+      serviceAccountName: registry-sa
       containers:
       - name: create-image-registry
         command:
