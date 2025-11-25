@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-image-registry
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  backoffLimit: 100
+  template:
+    spec:
+      containers:
+      - name: create-image-registry
+        command:
+          - /bin/bash
+          - '-c'
+          - |
+            oc patch configs.imageregistry.operator.openshift.io cluster --type=merge   -p '{"spec":{"managementState":"Managed","storage":{"managementState":"Managed","pvc":{"claim":"image-registry-storage"}}}}'
+            oc -n openshift-image-registry patch configs.imageregistry.operator.openshift.io/cluster --patch '{"spec":{"defaultRoute":true}}' --type=merge
+        image: quay.io/openshift/origin-cli:4.16
+        volumeMounts:
+          - mountPath: /scripts
+            name: create-image-registry-vol
+      restartPolicy: Never
+      volumes:
+      - name: create-image-registry-vol
