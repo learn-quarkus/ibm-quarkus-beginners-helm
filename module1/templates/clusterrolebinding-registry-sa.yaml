@@ -1,14 +1,25 @@
 apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: registry-config-reader
+rules:
+  - apiGroups:
+      - imageregistry.operator.openshift.io
+    resources:
+      - configs
+    verbs:
+      - get
+      - list
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: registry-sa-viewer
-  annotations:
-    argocd.argoproj.io/sync-wave: "0"
-
+  name: registry-config-reader-binding
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: registry-viewer
+  name: registry-config-reader
 subjects:
   - kind: ServiceAccount
     name: registry-sa
